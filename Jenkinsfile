@@ -8,12 +8,16 @@ pipeline {
     }
     stage('Build') {
       steps {
-        sh '#python -m py_compile #FILE1 #FILE2 #FILE3'
+        sh '''#Compiles python resources for efficiency and speed
+
+python3.6 -m py_compile'''
       }
     }
     stage('Deploy') {
       steps {
-        sh '#mv -v ./* ~/../flexion'
+        sh '''#Deploys the python code to the TEST server
+
+scp -i ~/.ssh/test_key $WORKSPACE/*.py ec2-user@ec2-18-217-110-31.us-east-2.compute.amazonaws.com:~/'''
       }
     }
   }
