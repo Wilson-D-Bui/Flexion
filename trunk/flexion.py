@@ -29,12 +29,12 @@ class FlexionCmsApp:
     """
     Top-level class that calls application
     """
+    
     def __init__(self):
         """
         Initialize main class with necessary variables.
         """
-        self._input = ''
-        self._answer = ''
+
 
     def compare(_conversion, _answer):
         """
@@ -42,11 +42,33 @@ class FlexionCmsApp:
         """
         print ("C")
 
-    def validateTemp(_temperature):
+
+    def validateInputs(self, _temperature, _target, _answer):
         """
-        Determines the validity of the input from the end user
+        Determines the validity of the inputs from the end user
         """
-        print ("V")
+        validUnits = ["fahrenheit", "celcius", "kelvin", "rankine"]
+        validity = True
+
+        "Validate the problem"
+        if len(_temperature.split()) == 2:
+            tempValue = _temperature.split()[0]
+            tempUnit = _temperature.split()[1]
+            if tempValue.isdigit() == False or tempUnit.lower() not in validUnits:
+                validity = False
+        else:
+            validity = False
+
+        "Validate the target"
+        if _target not in validUnits:
+            validity = False
+
+        "Validate the answer"
+        if _answer.isdigit() == False:
+            valdity = False
+        
+        return validity
+
 
     def fahrenheit(_input):
         """
@@ -54,17 +76,20 @@ class FlexionCmsApp:
         """
         print ("F")
 
+
     def celcius(_input):
         """
         Calls celcius.py to convert units to Celcius
         """
         print ("C")
 
+
     def kelvin(_input):
         """
         Calls kelvin.py to convert units to Kelvin
         """
         print ("K")
+
 
     def rankine(_input):
         """
@@ -82,15 +107,24 @@ if __name__ == '__main__':
     app = FlexionCmsApp()
 
     while True:
-        temperature = input("Please enter the value and unit of temperature using the following format (e.g. 84.2 Fahrenheit):\n")
-        targetUnit = input("Please enter the target unit of temperature:\n")
-        answer = input("Please enter the student's answer:\n")
-
-        if temperature.strip().upper() == 'EXIT' or targetUnit.strip().upper() == 'EXIT' or answer.strip().upper() == 'EXIT':
-            print ("Thanks for using our application to check your answers! See you next time.")
+        temperature = input("Please enter the problem in the following format (e.g. 84.2 Fahrenheit):\n")
+        if temperature.strip().lower() == 'exit':
             break;
-    
-    sys.exit(app)
+        
+        target = input("Please enter the target unit of temperature:\n")
+        if target.strip().lower() == 'exit':
+            break;
+        
+        answer = input("Please enter the student's answer:\n")
+        if answer.strip().lower() == 'exit':
+            break;
+
+        if app.validateInputs(temperature, target, answer) == False:
+            print ("\ninvalid\n")
+        else:
+            print ("")
+        
+    sys.exit(print ("Thanks for using our application to check your answers! See you next time."))
 
 
 
