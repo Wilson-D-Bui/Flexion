@@ -15,15 +15,20 @@ import sys
 
 class Fahrenheit:
     
-    def __init__(self):
-        """Constructor for this class"""
+	def __init__(self):
+		"""Constructor for this class"""
+		self.unit = "Fahrenheit"
 
-    def toCelcius(self, _input):
-        """Converts Fahrenheit to Celcius"""
-        
-    def toKelvin(self, _input):
-        """Converts Fahrenheit to Kelvin"""
+	def toFahrenheit(self, _input):
+		"""No converson necessary"""
+		return round(_input, 1)
 
-    def toRankine(self, _input):
-        """Converts Fahrenheit to Rankine"""
+	def toCelcius(self, _input):
+		"""Converts Fahrenheit to Celcius"""
+
+	def toKelvin(self, _input):
+		"""Converts Fahrenheit to Kelvin"""
+
+	def toRankine(self, _input):
+		"""Converts Fahrenheit to Rankine"""
 

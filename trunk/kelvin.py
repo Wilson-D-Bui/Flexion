@@ -14,16 +14,20 @@ import sys
 
 
 class Kelvin:
-    
-    def __init__(self):
-        """Constructor for this class"""
-        
-    def toFahrenheit(self, _input):
-        """Converts Kelvin to Fahrenheit"""
 
-    def toCelcius(self, _input):
-        """Converts Kelvin to Celcius"""
+	def __init__(self):
+		"""Constructor for this class"""
+		self.unit = "Kelvin"
 
-    def toRankine(self, _input):
-        """Converts Kelvin to Rankine"""
+	def toFahrenheit(self, _input):
+		"""Converts Kelvin to Fahrenheit"""
+
+	def toCelcius(self, _input):
+		"""Converts Kelvin to Celcius"""
+
+	def toKelvin(self, _input):
+		"""No converson necessary"""
+
+	def toRankine(self, _input):
+		"""Converts Kelvin to Rankine"""
 
