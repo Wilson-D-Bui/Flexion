@@ -3,14 +3,14 @@ pipeline {
   stages {
     stage('SCM Checkout') {
       steps {
-        git(url: 'https://github.com/Wilson-D-Bui/Flexion.git', branch: 'master', changelog: true, poll: true, credentialsId: 'Wilson-D-Bui')
+        git(url: 'https://github.com/Wilson-D-Bui/Flexion.git', branch: 'development', changelog: true, poll: true, credentialsId: 'Wilson-D-Bui')
       }
     }
     stage('Build') {
       steps {
         sh '''#Compiles python resources for efficiency and speed
 
-python3.6 -m py_compile'''
+python3.6 -m py_compile flexion.py'''
       }
     }
     stage('Deploy') {
