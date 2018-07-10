@@ -24,29 +24,24 @@ __status__ = 'Development'
 import os
 import sys
 
+from fahrenheit import Fahrenheit
+from celcius import Celcius
+from kelvin import Kelvin
+from rankine import Rankine
+
 
 class FlexionCmsApp:
-    """
-    Top-level class that calls application
-    """
-    
+
     def __init__(self):
-        """
-        Initialize main class with necessary variables.
-        """
+        """Constructor for this class"""
 
-
-    def compare(_conversion, _answer):
-        """
-        Compares the problem to the student's answer and returns 'correct' or 'incorrect'
-        """
+    def compare(self, _conversion, _answer):
+        """Compares the problem to the student's answer and returns 'correct' or 'incorrect'"""
         print ("C")
 
-
     def validateInputs(self, _temperature, _target, _answer):
-        """
-        Determines the validity of the inputs from the end user
-        """
+        """Determines the validity of the inputs from the end user"""
+        
         validUnits = ["fahrenheit", "celcius", "kelvin", "rankine"]
         validity = True
 
@@ -70,33 +65,6 @@ class FlexionCmsApp:
         return validity
 
 
-    def fahrenheit(_input):
-        """
-        Calls fahrenheit.py to convert units to Fahrenheit
-        """
-        print ("F")
-
-
-    def celcius(_input):
-        """
-        Calls celcius.py to convert units to Celcius
-        """
-        print ("C")
-
-
-    def kelvin(_input):
-        """
-        Calls kelvin.py to convert units to Kelvin
-        """
-        print ("K")
-
-
-    def rankine(_input):
-        """
-        Calls rankine.py to convert units to Rankine
-        """
-        print ("Rs")
-
 #------------- END FUNCTION DEFINITIONS ------------- #
 
 
@@ -107,20 +75,20 @@ if __name__ == '__main__':
     app = FlexionCmsApp()
 
     while True:
-        temperature = input("Please enter the problem in the following format (e.g. 84.2 Fahrenheit):\n")
+        temperature = input("Input Temperature:\n")
         if temperature.strip().lower() == 'exit':
             break;
         
-        target = input("Please enter the target unit of temperature:\n")
+        target = input("Target Units:\n")
         if target.strip().lower() == 'exit':
             break;
         
-        answer = input("Please enter the student's answer:\n")
+        answer = input("Answer:\n")
         if answer.strip().lower() == 'exit':
             break;
 
         if app.validateInputs(temperature, target, answer) == False:
-            print ("\ninvalid\n")
+            print ("\nOutput\ninvalid\n")
         else:
             print ("")
         
