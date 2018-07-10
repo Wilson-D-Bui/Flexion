@@ -21,14 +21,17 @@ class Fahrenheit:
 
 	def toFahrenheit(self, _input):
 		"""No converson necessary"""
-		return round(_input, 1)
+		return round(_input)
 
-	def toCelcius(self, _input):
-		"""Converts Fahrenheit to Celcius"""
+	def toCelsius(self, _input):
+		"""Converts Fahrenheit to Celsius"""
+		return round(float((_input - 32) * (5/9)))
 
 	def toKelvin(self, _input):
 		"""Converts Fahrenheit to Kelvin"""
+		return round(float((_input + 459.67) * (5/9)))
 
 	def toRankine(self, _input):
 		"""Converts Fahrenheit to Rankine"""
+		return round(float(_input + 459.67))
 

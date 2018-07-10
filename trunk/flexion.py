@@ -25,7 +25,7 @@ import os
 import sys
 
 from fahrenheit import Fahrenheit
-from celcius import Celcius
+from celsius import Celsius
 from kelvin import Kelvin
 from rankine import Rankine
 
@@ -35,27 +35,32 @@ class FlexionCmsApp:
     def __init__(self):
         """Constructor for this class"""
 
-    def compare(self, _conversion, _answer):
-        """Compares the problem to the student's answer and returns 'correct' or 'incorrect'"""
-        print ("C")
-
     def validateInputs(self, _temperature, _target, _answer):
         """Determines the validity of the inputs from the end user"""
         
-        validUnits = ["fahrenheit", "celcius", "kelvin", "rankine"]
+        validUnits = ["fahrenheit", "celsius", "kelvin", "rankine"]
         validity = True
 
         "Validate the problem"
         if len(_temperature.split()) == 2:
             tempValue = _temperature.split()[0]
             tempUnit = _temperature.split()[1]
-            if "." in tempValue:
-                if float(tempValue) == False:
-                    validity = False
-            else:
-                if tempValue.isnumeric() == False:
-                    validity = False
+
+            "Account for negatives, floating digits, and units"
+            try:
+                if "-" in tempValue and float(tempValue) < 0:
+                    validity = True
+                elif "." in tempValue:
+                    if float(tempValue) == False:
+                        validity = False
+                else:
+                    if tempValue.isnumeric() == False:
+                        validity = False
+            except ValueError:
+                validity = False
+                    
             if tempUnit.lower() not in validUnits:
+                print ("here")
                 validity = False
         else:
             validity = False
@@ -76,11 +81,11 @@ class FlexionCmsApp:
 
 if __name__ == '__main__':
     
-    print ("Welcome. This is the Flexion CMS Coding Assignment.\n\nThis application is used to check if students' temperature conversions from Fahrenheit <-> Celcius <-> Kelvin <-> Rankine are correct.\n\nPlease be sure to answer each prompt correctly in order to receive the appropriate output.\nIf you wish to exit the program at any time, please type 'exit' into any prompt or push CNTRL+C.\n")
+    print ("Welcome. This is the Flexion CMS Coding Assignment.\n\nThis application is used to check if students' temperature conversions from Fahrenheit <-> Celsius <-> Kelvin <-> Rankine are correct.\n\nPlease be sure to answer each prompt correctly in order to receive the appropriate output.\nIf you wish to exit the program at any time, please type 'exit' into any prompt or push CNTRL+C.\n")
 
     flexion = FlexionCmsApp()
     fahrenheit = Fahrenheit()
-    celcius = Celcius()
+    celsius = Celsius()
     kelvin = Kelvin()
     rankine = Rankine()
 
@@ -110,57 +115,61 @@ if __name__ == '__main__':
 
         "Temperature conversion logic tree"
         if tempUnit == "fahrenheit":
-            if tempUnit == fahrenheit.unit.lower():
+            if target == fahrenheit.unit.lower():
                 correctAnswer = fahrenheit.toFahrenheit(tempValue)
-            elif target == "celcius":
-                correctAnswer = fahrenheit.toCelcius(tempValue)
+            elif target == "celsius":
+                correctAnswer = fahrenheit.toCelsius(tempValue)
             elif target == "kelvin":
                 correctAnswer = fahrenheit.toKelvin(tempValue)
             elif target == "rankine":
                 correctAnswer = fahrenheit.toRankine(tempValue)
             else:
-                print ("Something is wrong with the input temperature unit.")
+                print ("\nSomething is wrong with the input temperature unit.")
                 
-        elif tempUnit == "celcius":
+        elif tempUnit == "celsius":
             if target == "fahrenheit":
-                correctAnswer = celcius.toFahrenheit(tempValue)
-            elif target == celcius.unit.lower():
-                correctAnswer = celcius.toCelcius(tempValue)
+                correctAnswer = celsius.toFahrenheit(tempValue)
+            elif target == celsius.unit.lower():
+                correctAnswer = celsius.toCelsius(tempValue)
             elif target == "kelvin":
-                correctAnswer = celcius.toKelvin(tempValue)
+                correctAnswer = celsius.toKelvin(tempValue)
             elif target == "rankine":
-                correctAnswer = celcius.toRankine(tempValue)
+                correctAnswer = celsius.toRankine(tempValue)
             else:
-                print ("Something is wrong with the input temperature unit.")
+                print ("\nSomething is wrong with the input temperature unit.")
                 
         elif tempUnit == "kelvin":
             if target == "fahrenheit":
                 correctAnswer = kelvin.toFahrenheit(tempValue)
-            elif target == "celcius":
-                correctAnswer = kelvin.toCelcius(tempValue)
+            elif target == "celsius":
+                correctAnswer = kelvin.toCelsius(tempValue)
             elif target == kelvin.unit.lower():
                 correctAnswer = kelvin.toKelvin(tempValue)
             elif target == "rankine":
                 correctAnswer = kelvin.toRankine(tempValue)
             else:
-                print ("Something is wrong with the input temperature unit.")
+                print ("\nSomething is wrong with the input temperature unit.")
                 
         elif tempUnit == "rankine":
             if target == "fahrenheit":
                 correctAnswer = rankine.toFahrenheit(tempValue)
-            elif target == "celcius":
-                correctAnswer = rankine.toCelcius(tempValue)
+            elif target == "celsius":
+                correctAnswer = rankine.toCelsius(tempValue)
             elif target == "kelvin":
                 correctAnswer = rankine.toKelvin(tempValue)
             elif target == rankine.unit.lower():
                 correctAnswer = rankine.toRankine(tempValue)
             else:
-                print ("Something is wrong with the input temperature unit.")
+                print ("\nSomething is wrong with the input temperature unit.")
                 
         else:
-            print ("Something is wrong with the inputs values...")
+            print ("\nSomething is wrong with the inputs values...")
 
-
+        "Final Output"
+        if correctAnswer == round(float(answer)):
+            print ("Output\ncorrect\n")
+        else:
+            print ("Output\nincorrect\n")
         
         
     sys.exit(print ("Thanks for using our application to check your answers! See you next time."))

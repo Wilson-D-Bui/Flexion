@@ -21,13 +21,17 @@ class Kelvin:
 
 	def toFahrenheit(self, _input):
 		"""Converts Kelvin to Fahrenheit"""
+		return round(float(_input * (9/5) - 459.67))
 
-	def toCelcius(self, _input):
-		"""Converts Kelvin to Celcius"""
+	def toCelsius(self, _input):
+		"""Converts Kelvin to Celsius"""
+		return round(float(_input - 273.15))
 
 	def toKelvin(self, _input):
 		"""No converson necessary"""
+		return round(_input)
 
 	def toRankine(self, _input):
 		"""Converts Kelvin to Rankine"""
+		return round(float(_input * (9/5)))
 

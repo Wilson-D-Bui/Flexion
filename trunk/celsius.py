@@ -13,21 +13,25 @@ import os
 import sys
 
 
-class Celcius:
+class Celsius:
 
 	def __init__(self):
 		"""Constructor for this class"""
-		self.unit = "Celcius"
+		self.unit = "Celsius"
 
 	def toFahrenheit(self, _input):
-		"""Converts Celcius to Fahrenheit"""
+		"""Converts Celsius to Fahrenheit"""
+		return round(float(_input * (5/9) + 32))
 
-	def toCelcius(self, _input):
-		"""Converts Celcius to Fahrenheit"""		
+	def toCelsius(self, _input):
+		"""Converts Celsius to Fahrenheit"""
+		return round(_input)
 
 	def toKelvin(self, _input):
-		"""Converts Celcius to Kelvin"""
+		"""Converts Celsius to Kelvin"""
+		return round(float(_input + 273.15))
 
 	def toRankine(self, _input):
-		"""Converts Celcius to Rankine"""
+		"""Converts Celsius to Rankine"""
+		return round(float((_input + 273.15) * (9/5)))
 
