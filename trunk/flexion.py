@@ -77,7 +77,7 @@ class FlexionCmsApp:
 
 if __name__ == '__main__':
     
-    print ("Welcome. This is the Flexion CMS Coding Assignment.\n\nThis application is used to check if students' temperature conversions from F <-> C <-> K <-> R are correct.\n\nPlease be sure to answer each prompt correctly in order to receive the appropriate output.\nIf you wish to exit the program at any time, please type 'exit' into any prompt or push CNTRL+C.\n")
+    print ("Welcome. This is the Flexion CMS Coding Assignment.\n\nThis application is used to check if students' temperature conversions from Fahrenheit <-> Celcius <-> Kelvin <-> Rankine are correct.\n\nPlease be sure to answer each prompt correctly in order to receive the appropriate output.\nIf you wish to exit the program at any time, please type 'exit' into any prompt or push CNTRL+C.\n")
 
     app = FlexionCmsApp()
 
@@ -86,7 +86,7 @@ if __name__ == '__main__':
         targetUnit = input("Please enter the target unit of temperature:\n")
         answer = input("Please enter the student's answer:\n")
 
-        if temperature.strip().upper() == 'EXIT':
+        if temperature.strip().upper() == 'EXIT' or targetUnit.strip().upper() == 'EXIT' or answer.strip().upper() == 'EXIT':
             print ("Thanks for using our application to check your answers! See you next time.")
             break;
     
