@@ -10,7 +10,7 @@ pipeline {
       steps {
         sh '''#Compiles python resources for efficiency and speed
 
-python3.6 -m py_compile flexion.py'''
+python3.6 -m py_compile'''
       }
     }
     stage('Deploy') {
